@@ -1,1 +1,1 @@
-window("Hello world")
+alert("Hello world");
