@@ -215,12 +215,12 @@ let config = getConfig()
 let modo_contador_automatico = chk_contador_automatico.checked;
 if(modo_contador_automatico){
     div_info_automatico.style.display="block"
-    btn_play_pause.style.display="none"
-    btn_reset.style.display="none"
+    // btn_play_pause.style.display="none"
+    // btn_reset.style.display="none"
 } else{
     div_info_automatico.style.display="none"
-    btn_play_pause.style.display="inline-block"
-    btn_reset.style.display="inline-block"
+    // btn_play_pause.style.display="inline-block"
+    // btn_reset.style.display="inline-block"
 }
 
 let exibe_apenas_min_e_seg = chk_apenas_minuto_segundo.checked;
@@ -319,12 +319,12 @@ chk_contador_automatico.addEventListener('input', ()=>{
     modo_contador_automatico = chk_contador_automatico.checked
     if(modo_contador_automatico){
         div_info_automatico.style.display="block"
-        btn_play_pause.style.display="none"
-        btn_reset.style.display="none"
+        // btn_play_pause.style.display="none"
+        // btn_reset.style.display="none"
     } else{
         div_info_automatico.style.display="none"
-        btn_play_pause.style.display="inline-block"
-        btn_reset.style.display="inline-block"
+        // btn_play_pause.style.display="inline-block"
+        // btn_reset.style.display="inline-block"
     }
     reset_contador()
 })
