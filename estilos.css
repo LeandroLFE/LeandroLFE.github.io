@@ -1,0 +1,88 @@
+*{
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+}
+
+body{
+    background-color: darkgreen;
+}
+
+#conteudo{
+    width: 440px;
+}
+
+.div-time{
+    margin: 3px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.time{
+    height: 45px;
+    width: 45px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.time-separator{
+    text-align: center;
+    margin: 3px;
+}
+
+.time-resp-separator{
+    vertical-align: middle;
+}
+
+#hour-current, #hour-current-separator, #hour-amount, #hour-amount-separator{
+    display: inline-block;
+}
+
+.current{
+    background-color: aqua;
+}
+
+.amount{
+    background-color: blue;
+}
+
+.btn{
+    height:50px;
+    width:100px;
+}
+
+.espaco-elementos-entre-linhas{
+    margin-top: 10px;
+    vertical-align: middle;
+}
+
+#selectVelocidadeVideo{
+    height: 30px;
+    font-size: 14px;
+}
+
+.espaco-result-externo{
+    margin-top: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 7px;
+}
+
+.espaco-result-interno{
+    margin-top: 5px;
+    background-color: black;
+    width: 150px;
+    color: white;
+    font-size: 24px;
+    display: inline-block;
+}
+
+.chk{
+    vertical-align: middle;
+    width: 25px;
+    height: 25px;
+}
+
+#tamanho-fonte-range{
+    height: 10px;
+}

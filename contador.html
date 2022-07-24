@@ -4,11 +4,75 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="estilos.css" rel="stylesheet">
     <title>Contador</title>
 </head>
 <body>
-    <button id="btn-play-pause">Teste</button>
+    <div id="conteudo">
+        <div class="espaco-elementos-entre-linhas">
+            <span>Informe o tempo atual e o total do vídeo:</span>
+        </div>
+        <div class="div-time">
+            <input type="number" class="time current" id="hour-current" onchange="testa_valor_caixa(this, 24)" value="00" >
+            <span class="time-separator" id="hour-current-separator">:</span>
+            <input type="number" class="time current" id="min-current" onchange="testa_valor_caixa(this, 60)" value="00">
+            <span class="time-separator">:</span>
+            <input type="number" class="time current" id="sec-current" onchange="testa_valor_caixa(this, 60)" value="00">
+            <span class="time-separator">/</span>
+            <input type="number" class="time amount" id="hour-amount" onchange="testa_valor_caixa(this, 24)" value="00">
+            <span class="time-separator" id="hour-amount-separator">:</span>
+            <input type="number" class="time amount" id="min-amount" onchange="testa_valor_caixa(this, 60)" value="24">
+            <span class="time-separator">:</span>
+            <input type="number" class="time amount" id="sec-amount" onchange="testa_valor_caixa(this, 60)" value="30">
+        </div>
+        <div class="espaco-elementos-entre-linhas">
+            <span>Velocidade do vídeo:</span>
+            <select id="selectVelocidadeVideo">
+                <option value="1" selected>1x</option>
+                <option value="1.25">1,25x</option>
+                <option value="1.5">1,5x</option>
+                <option value="1.75">1,75x</option>
+                <option value="2">2x</option>
+            </select>
+        </div>
+        <div class="espaco-elementos-entre-linhas">
+            <button id="btn-play-pause" class="btn">Play</button>
+            <button id="btn-reset" class="btn">Reset</button>
+            <button id="btn-update" class="btn">Atualizar</button>
+            <button id="btn-options" class="btn">Opções</button>
+        </div>
+        <div class="espaco-result-externo">
+            Contador para recortar no OBS:<br>
+            <div class="espaco-result-interno">
+                <span id="resp-atual">00:00:00</span><span class="time-resp-separator"> / </span><span id="resp-total">24:30:00</span>
+            </div> 
+        </div>
+        <div id="info-automatico">
+            ATENÇÃO:O contador contará automaticamente a partir da aba monitorada
+        </div>
+        <div class="espaco-elementos-entre-linhas" id="div-opcoes">
+            <div class="espaco-elementos-entre-linhas">
+                <span>Contador automático: </span><input type="checkbox" class="chk" id="contador-automatico" checked/>
+            </div>
+            <div class="espaco-elementos-entre-linhas">
+                <span>Apenas minuto e segundo: </span><input type="checkbox" class="chk" id="apenas-minuto-segundo" />
+            </div>
+            <div class="espaco-elementos-entre-linhas">
+                <span>Cor de fundo do contador: </span><input type="color" id="cor-fundo" value="#000000">
+            </div>
+            <div class="espaco-elementos-entre-linhas">
+                <span>Cor da fonte do contador: </span><input type="color" id="cor-fonte" value="#ffffff">
+            </div> 
+            <div class="espaco-elementos-entre-linhas">
+                <span>Tamanho da fonte do contador: </span><br>
+                <input type="range" id="tamanho-fonte-range" min=8 max=72>
+                <input type="number" id="tamanho-fonte-num" class="time">
+            </div>
+            <div class="espaco-elementos-entre-linhas">
+                <button id="btn-save" class="btn">Salvar</button>
+            </div>
+        </div>
+    </div>
 <script src="contador.js" type="text/javascript"></script>
-</script>
 </body>
 </html>
