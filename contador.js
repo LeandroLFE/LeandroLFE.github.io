@@ -73,7 +73,6 @@ function pausa_loop_execucao(){
 } 
 
 function gera_loop_execucao(){
-    let worker = new Worker('worker.js');
     worker.postMessage({
         play_pause,
         dateTime_tempo_atual,
@@ -254,6 +253,8 @@ let qtde_formato_hora;
 let tempo_atual;
 let tempo_total;
 
+let worker;
+
 function testa_valor_caixa(element, limite){ 
     if(element.value<0){
         element.value = 0;
@@ -266,6 +267,7 @@ function testa_valor_caixa(element, limite){
 
 try{
     window.onload = ()=>{
+        worker = new Worker('worker.js');
         select_vel_video = document.querySelector('#selectVelocidadeVideo');
         hora_atual = document.querySelector('#hour-current'); 
         separador_hora_atual = document.querySelector('#hour-current-separator'); 
