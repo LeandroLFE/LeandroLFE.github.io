@@ -73,6 +73,13 @@ function pausa_loop_execucao(){
 } 
 
 function gera_loop_execucao(){
+    let worker = new Worker('worker.js');
+    worker.postMessage({
+        play_pause,
+        dateTime_tempo_atual,
+        qtde_formato_hora,
+        intervalo_loop
+    })
     return setTimeout(function interna() {
         if(play_pause){
             dateTime_tempo_atual = add_um_segundo(dateTime_tempo_atual)
@@ -465,6 +472,9 @@ try{
             resp_total.style.fontSize = tamanho_fonte_resp_num.value + "px"
         })
         
+        worker.onmessage = function(event){
+            console.log(event.data);
+        }
     }
 } catch(err){
     console.log(err);
