@@ -64,6 +64,7 @@ function reset_contador(){
 }
 
 function pausa_loop_execucao(){
+    play_pause = false
     btn_play_pause.innerHTML = "Play";
     cor_atual = cor_vermelha
     btn_play_pause.style.backgroundColor = cor_atual
@@ -73,26 +74,13 @@ function pausa_loop_execucao(){
 } 
 
 function gera_loop_execucao(){
-    return setTimeout(function interna() {
-        if(play_pause){
-            dateTime_tempo_atual = add_um_segundo(dateTime_tempo_atual)
-            diff_dates = (dateTime_tempo_total - dateTime_tempo_atual) / intervalo_loop;
-            tempo_atual = monta_hora_min_seg(dateTime_tempo_atual, qtde_formato_hora);
-            tempo_total = monta_hora_min_seg(dateTime_tempo_total, qtde_formato_hora);
-            resp_atual.innerHTML = tempo_atual;
-            resp_total.innerHTML = tempo_total;
-            if (diff_dates<0){
-                resp_atual.innerHTML = tempo_total;
-                resp_total.innerHTML = tempo_total;
-                play_pause = false
-                pausa_loop_execucao()
-            } else{
-                setTimeout(interna, intervalo_loop)
-            }
-        } else{
-            pausa_loop_execucao()
-        }
-    }, intervalo_loop);
+    worker.postMessage({
+        play_pause,
+        dateTime_tempo_atual,
+        dateTime_tempo_total,
+        qtde_formato_hora,
+        intervalo_loop
+    })
 }
 
 function atribui_hora_min_seg(tempo_array){
@@ -104,6 +92,7 @@ function atribui_hora_min_seg(tempo_array){
 }
 
 function inicia_loop_execucao(){
+    play_pause = true
     btn_play_pause.innerHTML = "Pause";
     cor_atual = cor_verde
     btn_play_pause.style.backgroundColor = cor_atual
@@ -247,6 +236,8 @@ let qtde_formato_hora;
 let tempo_atual;
 let tempo_total;
 
+let worker;
+
 function testa_valor_caixa(element, limite){ 
     if(element.value<0){
         element.value = 0;
@@ -259,6 +250,7 @@ function testa_valor_caixa(element, limite){
 
 try{
     window.onload = ()=>{
+        worker = new Worker('worker.js');
         select_vel_video = document.querySelector('#selectVelocidadeVideo');
         hora_atual = document.querySelector('#hour-current'); 
         separador_hora_atual = document.querySelector('#hour-current-separator'); 
@@ -363,10 +355,9 @@ try{
         }, false);
         
         btn_play_pause.addEventListener('click', () => {
-            play_pause = !play_pause;
-            if(play_pause)
-                inicia_loop_execucao()
-        })
+            if(!play_pause) inicia_loop_execucao()
+            else pausa_loop_execucao()
+        })  
         
         btn_reset.addEventListener('click', reset_contador)
         
@@ -464,6 +455,17 @@ try{
             resp_atual.style.fontSize = tamanho_fonte_resp_num.value + "px"
             resp_total.style.fontSize = tamanho_fonte_resp_num.value + "px"
         })
+        
+        worker.onmessage = function(event){
+            console.log(event.data);
+            play_pause = e.data.play_pause
+            tempo_atual = e.data.tempo_atual
+            resp_atual.innerHTML = tempo_atual;
+            resp_total.innerHTML = tempo_total;
+            if (!play_pause){
+                pausa_loop_execucao()
+            }
+        }
     }
 } catch(err){
     console.log(err);
