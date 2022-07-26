@@ -40,6 +40,7 @@ function interna() {
     tempo_total = monta_hora_min_seg(dateTime_tempo_total, qtde_formato_hora);
     postMessage({
         play_pause,
+        dateTime_tempo_atual,
         tempo_atual,
         tempo_total
     })

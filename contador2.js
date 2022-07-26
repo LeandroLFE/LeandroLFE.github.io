@@ -456,11 +456,12 @@ try{
         
         worker.onmessage = function(e){
             console.log(e.data);
-            play_pause = e.data.play_pause      
+            play_pause = e.data.play_pause
+            tempo_atual = e.data.tempo_atual
+            dateTime_tempo_atual = e.data.dateTime_tempo_atual      
             if (!play_pause){
                 pausa_loop_execucao()
             } else{
-                tempo_atual = e.data.tempo_atual
                 resp_atual.innerHTML = tempo_atual;
                 resp_total.innerHTML = tempo_total;
             }
