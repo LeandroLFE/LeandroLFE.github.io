@@ -458,13 +458,12 @@ try{
             console.log(e.data);
             play_pause = e.data.play_pause
             tempo_atual = e.data.tempo_atual
-            dateTime_tempo_atual = e.data.dateTime_tempo_atual      
+            dateTime_tempo_atual = e.data.dateTime_tempo_atual 
+            resp_atual.innerHTML = tempo_atual;
+                resp_total.innerHTML = tempo_total;     
             if (!play_pause){
                 pausa_loop_execucao()
-            } else{
-                resp_atual.innerHTML = tempo_atual;
-                resp_total.innerHTML = tempo_total;
-            }
+            } 
         }
     }
 } catch(err){
