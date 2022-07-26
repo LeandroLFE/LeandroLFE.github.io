@@ -456,8 +456,8 @@ try{
             resp_total.style.fontSize = tamanho_fonte_resp_num.value + "px"
         })
         
-        worker.onmessage = function(event){
-            console.log(event.data);
+        worker.onmessage = function(e){
+            console.log(e.data);
             play_pause = e.data.play_pause
             tempo_atual = e.data.tempo_atual
             resp_atual.innerHTML = tempo_atual;
