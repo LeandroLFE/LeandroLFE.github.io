@@ -63,17 +63,7 @@ function reset_contador(){
     resp_total.innerHTML = tempo_total
 }
 
-function pausa_loop_execucao(){
-    play_pause = false
-    btn_play_pause.innerHTML = "Play";
-    cor_atual = cor_vermelha
-    btn_play_pause.style.backgroundColor = cor_atual
-    if(loop_execucao){
-        clearTimeout(loop_execucao);
-    }
-} 
-
-function gera_loop_execucao(){
+function comunica_worker(){
     worker.postMessage({
         play_pause,
         dateTime_tempo_atual,
@@ -82,6 +72,14 @@ function gera_loop_execucao(){
         intervalo_loop
     })
 }
+
+function pausa_loop_execucao(){
+    play_pause = false
+    btn_play_pause.innerHTML = "Play";
+    cor_atual = cor_vermelha
+    btn_play_pause.style.backgroundColor = cor_atual
+    comunica_worker()
+} 
 
 function atribui_hora_min_seg(tempo_array){
     let dateTime_tempo = new Date("July 4 1776 00:00:00.0");
@@ -96,7 +94,7 @@ function inicia_loop_execucao(){
     btn_play_pause.innerHTML = "Pause";
     cor_atual = cor_verde
     btn_play_pause.style.backgroundColor = cor_atual
-    loop_execucao = gera_loop_execucao()
+    comunica_worker()
 }
 
 /*
