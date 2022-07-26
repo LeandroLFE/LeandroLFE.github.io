@@ -7,6 +7,10 @@ let qtde_formato_hora;
 let intervalo_loop;
 let play_pause;
 
+function converteNumeroDeUmDigitoEmNumeroComDoisDigitos(numero){
+    return numero>9 ? numero : '0' + numero;
+}
+
 function add_um_segundo(dateTime_tempo){
     dateTime_tempo.setSeconds(dateTime_tempo.getSeconds() + 1)
     return dateTime_tempo
@@ -28,8 +32,6 @@ function monta_hora_min_seg(dateTime_tempo, tempo_array_length){
             converteNumeroDeUmDigitoEmNumeroComDoisDigitos(dateTime_tempo.getSeconds());
     }
 }
-
-
 
 function interna() {
     dateTime_tempo_atual = add_um_segundo(dateTime_tempo_atual)
