@@ -1,8 +1,45 @@
 body{
-    background-color : brown;
-    color: whitesmoke;
+    background-color : #002299;
+    color: white;
+}
+
+.objetivo{
+    font-size: 200%;
+}
+
+.icon:hover{
+    cursor: pointer;
+}
+
+.job-name{
+    font-weight: bold;
+}
+
+.job-description{
+   font-size: 100%;
+   margin: 0%;
 }
 
 h1{
     text-align: center;
+    padding: 5px;
+    padding-top: 20px;
+    font-size: 200%;
+}
+
+#myName{
+    font-size: 20px;
+    color: aqua;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.my-links{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.port-button:hover{
+    background-color: brown;
 }
